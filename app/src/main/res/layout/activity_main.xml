@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center_horizontal"
+            android:text="Iniciar Sesión"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.091" />
+
+        <EditText
+            android:id="@+id/usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="usuario"
+            app:layout_constraintBottom_toTopOf="@+id/contrasena"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_home"
+            app:layout_constraintVertical_bias="0.212" />
+
+        <EditText
+            android:id="@+id/contrasena"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="contraseña"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_home"
+            app:layout_constraintVertical_bias="0.163" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/boton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Iniciar Sesión"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contrasena"
+            app:layout_constraintVertical_bias="0.358" />
+
+
+        <CheckBox
+            android:id="@+id/mantenerSesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mantener iniciada sesion"
+            app:layout_constraintBottom_toTopOf="@+id/boton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contrasena"
+            app:layout_constraintVertical_bias="0.257" />
+
+        <ProgressBar
+            android:id="@+id/inicioProgressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:visibility="invisible"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintBottom_toBottomOf="@id/boton"
+            app:layout_constraintEnd_toEndOf="@id/boton"
+            app:layout_constraintStart_toStartOf="@id/boton"
+            app:layout_constraintTop_toTopOf="@id/boton"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

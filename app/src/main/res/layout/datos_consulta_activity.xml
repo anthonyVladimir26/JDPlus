@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DatosConsulta">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#474341"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        >
+
+        <Button
+            android:id="@+id/botonRegresar"
+            style="@style/Widget.AppCompat.Button"
+            app:backgroundTint="#474341"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:drawableBottom="@drawable/abc_vector_test" />
+
+        <TextView
+            android:id="@+id/encabezado"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="Consultas"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/tvEspecialidad"
+            android:layout_height="wrap_content"
+            android:text="Especialidad"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/fechaHora"
+            android:layout_height="wrap_content"
+            android:text="Especialidad"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/fechaCita"
+            android:layout_height="wrap_content"
+            android:text="Especialidad"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/horaCita"
+            android:layout_height="wrap_content"
+            android:text="Especialidad"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/nombrePaciente"
+            android:layout_height="wrap_content"
+            android:text="Especialidad"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/edadPaciente"
+            android:layout_height="wrap_content"
+            android:text="Especialidad"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/tipoSngre"
+            android:layout_height="wrap_content"
+            android:text="Especialidad"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/enfermedades"
+            android:layout_height="wrap_content"
+            android:text="Especialidad"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/medicacion"
+            android:layout_height="wrap_content"
+            android:text="Especialidad"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/pago"
+            android:layout_height="wrap_content"
+            android:text="Especialidad"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

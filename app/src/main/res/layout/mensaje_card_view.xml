@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?><androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    cardview:cardCornerRadius="3sp"
+    cardview:cardElevation="3dp"
+    cardview:cardUseCompatPadding="true"
+    >
+
+    <LinearLayout
+
+        android:id="@+id/mensaje_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="end|right"
+        android:background="#E492DD64"
+        >
+
+        <TextView
+            android:id="@+id/mensaje_envio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="mensaje"
+            android:textSize="20dp"
+            />
+
+        <TextView
+            android:id="@+id/hora_envio"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="end|bottom"
+            android:text="hora"/>
+
+        <ImageView
+            android:id="@+id/imagen_mensaje"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            cardview:srcCompat="@drawable/ic_launcher_background"
+            android:visibility="gone"
+            tools:ignore="VectorDrawableCompat" />
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

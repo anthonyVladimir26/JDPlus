@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#5570CF"
+        android:padding="10dp"
+        tools:ignore="MissingConstraints">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        tools:ignore="MissingConstraints">
+
+
+        <TextView
+            android:id="@+id/nombreMensaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="nombres"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/imgVideoLlamada"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:padding="2sp"
+            android:src="@drawable/ic_video_llamada"
+            app:tint="@color/design_default_color_primary_dark" />
+
+    </LinearLayout>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

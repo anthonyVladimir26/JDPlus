@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/consultas"
+        android:title="Consultas"
+        />
+    <item
+        android:id="@+id/historial"
+        android:title="Historial Clinico"
+        />
+    <item
+        android:id="@+id/C_asistente"
+        android:title="Cerrar Sesion"
+        />
+
+</menu>
