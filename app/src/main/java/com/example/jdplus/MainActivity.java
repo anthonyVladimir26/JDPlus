@@ -29,9 +29,11 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.core.Constants;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import org.json.JSONArray;
@@ -55,9 +57,27 @@ public class MainActivity extends AppCompatActivity {
     boolean start = false;
     RequestQueue requestQueue;
 
+    FirebaseAuth firebaseAuth;
+
     private PreferenceManager preferenceManager;
 
     String ip = "192.168.1.66";
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        SharedPreferences sharedPreferences = getSharedPreferences("datos_usuario", Context.MODE_PRIVATE);
+        boolean sesion = sharedPreferences.getBoolean("sesion",false);
+        String tipo  =sharedPreferences.getString("tipo",null);
+
+        if (firebaseAuth.getCurrentUser() != null && sesion){
+            entrarInterfaz(tipo);
+        }
+        else {
+            FirebaseAuth.getInstance().signOut();
+
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.boton);
         mantenerSesion = findViewById(R.id.mantenerSesion);
         progressBarInicio = findViewById(R.id.inicioProgressBar);
+
+        firebaseAuth = FirebaseAuth.getInstance();
 
 
         getApplicationContext().deleteDatabase("juno_doctor.db");
@@ -89,7 +111,12 @@ public class MainActivity extends AppCompatActivity {
 
                     //loginCliente("http://"+ip+":8080/proyecto/cliente/validar_usuario_cliente.php");
 
-                    iniciarSesionFirebase();
+
+                    String email= edtUsuario.getText().toString()+"@junodoctor.com";
+
+                    String contrasena= edtContrasena.getText().toString();
+
+                    iniciarSesionFirebase(email,contrasena);
 
                 }
                 else {
@@ -99,85 +126,40 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
-    public void iniciarSesionFirebase(){
+    public void iniciarSesionFirebase(String email,String contrasena){
         btnLogin.setVisibility(View.INVISIBLE);
         progressBarInicio.setVisibility(View.VISIBLE);
-
-
-        FirebaseFirestore databaseUsuario = FirebaseFirestore.getInstance();
-        databaseUsuario.collection("usuarios")
-                .whereEqualTo("usuario", edtUsuario.getText().toString())
-                .whereEqualTo("contra",edtContrasena.getText().toString())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful() && task.getResult() != null && task.getResult().getDocuments().size()>0){
-                            DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
-                            usuario = documentSnapshot.getString("usuario");
-                            clave= documentSnapshot.getString("clave") ;
-                            nombre= documentSnapshot.getString("nombre");
-                            tipo ="usuario";
-                            id = documentSnapshot.getId();
-                            guardarDatosUsuarioActual(id,usuario,tipo,clave,start,nombre);
-                            entrarInterfaz(tipo);
-                        }
-                        else {
-
-                            FirebaseFirestore databaseDoctor = FirebaseFirestore.getInstance();
-                            databaseDoctor.collection("doctores")
-                                    .whereEqualTo("usuario", edtUsuario.getText().toString())
-                                    .whereEqualTo("contra",edtContrasena.getText().toString())
-                                    .get()
-                                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                            if (task.isSuccessful() && task.getResult() != null && task.getResult().getDocuments().size()>0){
-                                                DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
-                                                usuario = documentSnapshot.getString("usuario");
-                                                clave= null ;
-                                                nombre= documentSnapshot.getString("nombre");
-                                                tipo ="doctor";
-                                                id = documentSnapshot.getId();
-                                                guardarDatosUsuarioActual(id,usuario,tipo,clave,start,nombre);
-                                                entrarInterfaz(tipo);
-                                            }
-                                            else {
-                                                FirebaseFirestore databaseAsistente = FirebaseFirestore.getInstance();
-                                                databaseAsistente.collection("asistentes")
-                                                        .whereEqualTo("usuario", edtUsuario.getText().toString())
-                                                        .whereEqualTo("contra",edtContrasena.getText().toString())
-                                                        .get()
-                                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                                            @Override
-                                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                                if (task.isSuccessful() && task.getResult() != null && task.getResult().getDocuments().size()>0){
-                                                                    DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
-                                                                    usuario = documentSnapshot.getString("usuario");
-                                                                    clave= null ;
-                                                                    nombre= documentSnapshot.getString("nombre");
-                                                                    tipo ="Asistente";
-                                                                    id = documentSnapshot.getId();
-                                                                    guardarDatosUsuarioActual(id,usuario,tipo,clave,start,nombre);
-                                                                    entrarInterfaz(tipo);
-                                                                }
-                                                                else {
-                                                                    btnLogin.setVisibility(View.VISIBLE);
-                                                                    progressBarInicio.setVisibility(View.INVISIBLE);
-
-                                                                    Toast.makeText(getApplicationContext(),"USUARIO O CONTRASEÑA NO VALIDOS",Toast.LENGTH_SHORT).show();
-                                                                }
-                                                            }
-                                                        });
-                                            }
-                                        }
-                                    });
-                        }
-                    }
-                });
+        firebaseAuth.signInWithEmailAndPassword(email, contrasena).addOnCompleteListener(task -> {
+            if (task.isSuccessful() && task.getResult() != null) {
+                FirebaseFirestore databaseUsuario = FirebaseFirestore.getInstance();
+                databaseUsuario.collection("usuarios")
+                        .get()
+                        .addOnCompleteListener(task1 -> {
+                            if (task1.isSuccessful() && task1.getResult() != null && task1.getResult().getDocuments().size() > 0) {
+                                for (QueryDocumentSnapshot documentSnapshot : task1.getResult()) {
+                                    String id2 = documentSnapshot.getId();
+                                    if (FirebaseAuth.getInstance().getUid().equals(id2)) {
+                                        usuario = documentSnapshot.getString("usuario");
+                                        clave = documentSnapshot.getString("clave");
+                                        nombre = documentSnapshot.getString("nombre");
+                                        tipo = documentSnapshot.getString("tipo");
+                                        id = firebaseAuth.getUid();
+                                        guardarDatosUsuarioActual(id, usuario, tipo, clave, start, nombre);
+                                        entrarInterfaz(tipo);
+                                    }
+                                }
+                            } else {
+                                Toast.makeText(MainActivity.this, "Datos Incorrectos", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }else {
+                Toast.makeText(MainActivity.this, "datos no volidos", Toast.LENGTH_SHORT).show();
+                btnLogin.setVisibility(View.VISIBLE);
+                progressBarInicio.setVisibility(View.INVISIBLE);
+            }
+        });
     }
 
     //login del cliente
@@ -347,7 +329,7 @@ public class MainActivity extends AppCompatActivity {
         if (tipo.equals("doctor")){
             Intent intentDoctor = new Intent(this,NavDrawerDoctor.class);
             startActivityForResult(intentDoctor,0);}
-        if (tipo.equals("Asistente")){
+        if (tipo.equals("asistente")){
             Intent intentAsistente = new Intent(this,NavDrawerAsistente.class);
             startActivityForResult(intentAsistente,0);}
     }

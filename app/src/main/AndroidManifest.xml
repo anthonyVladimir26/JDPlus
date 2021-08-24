@@ -51,11 +51,11 @@
             android:theme="@style/Theme.PruebaAplicacion.NoActionBar" />
         <activity android:name=".GenerarConsulta" />
         <activity
-            android:name=".MainActivity"
+            android:name=".PresentacionActivity"
             android:theme="@style/Theme.PruebaAplicacion.NoActionBar" />
         <activity
             android:name=".DatosConsulta"
-            android:theme="@style/Theme.PruebaAplicacion.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".NavDrawerCliente"
             android:theme="@style/Theme.PruebaAplicacion.NoActionBar" />
@@ -66,7 +66,7 @@
             android:name=".NavDrawerDoctor"
             android:theme="@style/Theme.PruebaAplicacion.NoActionBar" />
         <activity
-            android:name=".PresentacionActivity"
+            android:name=".MainActivity"
             android:theme="@style/Theme.PruebaAplicacion.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

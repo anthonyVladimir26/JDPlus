@@ -37,7 +37,7 @@ public class GenerarConsulta extends AppCompatActivity {
         subir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                crearChat("http://192.168.1.70:8080/archivosPHP/mensajes/insertar_nuevo_chat.php");
+                crearChat("http://192.168.1.69:8080/archivosPHP/mensajes/insertar_nuevo_chat.php");
 
             }
         });

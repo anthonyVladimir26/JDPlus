@@ -51,21 +51,19 @@ public class MainFragmentCliente extends Fragment {
 
 
 
-    String url ="http://192.168.100.59:8080/proyecto/cliente/obtener_consultas_adulto.php";
+    String url ="http://192.168.1.69:8080/proyecto/cliente/obtener_consultas_adulto.php";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-       listMostrar = new ArrayList<Consultas>();
+       listMostrar = new ArrayList<>();
         View view = inflater.inflate(R.layout.cliente_main_fragment,container,false);
 
-        CreaBDSqlite creaBDSqlite = new CreaBDSqlite(getContext());
-        SQLiteDatabase db = creaBDSqlite.getWritableDatabase();
 
         recyclerView = view.findViewById(R.id.recicler_consultas);
 
-        //obtenerDatos(url);
+        obtenerDatos(url);
 
 
         return view;

@@ -93,8 +93,6 @@ public class NavDrawerDoctor extends AppCompatActivity implements NavigationView
                         if (task.isSuccessful() && task.getResult()!= null) {
                             // Get new FCM registration token
                             String token = task.getResult();
-
-
                             sendFCMTokenToDatabase(token);
                         }
 
@@ -214,8 +212,6 @@ public class NavDrawerDoctor extends AppCompatActivity implements NavigationView
                 .addOnFailureListener(e -> {
                     //Toast.makeText(this, "no se pudo crear por: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
-
-
 
     }
 }

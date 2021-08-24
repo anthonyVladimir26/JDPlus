@@ -1,93 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DatosConsulta">
+    tools:context=".DatosConsulta"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#474341"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark"
-        >
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
 
-        <Button
-            android:id="@+id/botonRegresar"
-            style="@style/Widget.AppCompat.Button"
-            app:backgroundTint="#474341"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:drawableBottom="@drawable/abc_vector_test" />
-
-        <TextView
-            android:id="@+id/encabezado"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:text="Consultas"
-            android:textSize="20sp" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre del paciente"
+                android:textSize="15sp"
+                />
+
+            <EditText
+                android:id="@+id/nombrePaciente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
+                android:text="tipo de sangre"
+                android:textColor="@color/black"
+                android:enabled="false"
+                android:textSize="20sp"
+                tools:ignore="MissingConstraints"
+                />
+
+        </LinearLayout>
+
+
+
     </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:orientation="vertical"
-        >
-        <TextView
-            android:layout_width="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <EditText
+
             android:id="@+id/tvEspecialidad"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/black"
+            android:enabled="false"
+            android:textSize="20sp"
+            tools:ignore="MissingConstraints"
             android:text="Especialidad"/>
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
             android:id="@+id/fechaHora"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Especialidad"/>
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/black"
+            android:enabled="false"
+            android:textSize="20sp"
+            tools:ignore="MissingConstraints"
+            android:text="fechaHora"/>
+        <EditText
             android:id="@+id/fechaCita"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Especialidad"/>
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/black"
+            android:enabled="false"
+            android:textSize="20sp"
+            tools:ignore="MissingConstraints"
+            android:text="fechaCita"/>
+        <EditText
+
             android:id="@+id/horaCita"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Especialidad"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:id="@+id/nombrePaciente"
-            android:layout_height="wrap_content"
-            android:text="Especialidad"/>
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/black"
+            android:enabled="false"
+            android:textSize="20sp"
+            tools:ignore="MissingConstraints"
+            android:text="hora cita"/>
+
+        <EditText
+
             android:id="@+id/edadPaciente"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Especialidad"/>
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/black"
+            android:enabled="false"
+            android:textSize="20sp"
+            tools:ignore="MissingConstraints"
+            android:text="edadPaciente"/>
+        <EditText
+
             android:id="@+id/tipoSngre"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Especialidad"/>
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/black"
+            android:enabled="false"
+            android:textSize="20sp"
+            tools:ignore="MissingConstraints"
+            android:text="tipoSngre"/>
+        <EditText
+
             android:id="@+id/enfermedades"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Especialidad"/>
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/black"
+            android:enabled="false"
+            android:textSize="20sp"
+            tools:ignore="MissingConstraints"
+            android:text="enfermedades"/>
+        <EditText
             android:id="@+id/medicacion"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Especialidad"/>
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/black"
+            android:enabled="false"
+            android:textSize="20sp"
+            tools:ignore="MissingConstraints"
+            android:text="medicacion"/>
+        <EditText
+
             android:id="@+id/pago"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Especialidad"/>
+            android:layout_gravity="center"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/black"
+            android:enabled="false"
+            android:textSize="20sp"
+            tools:ignore="MissingConstraints"
+            android:text="pago"/>
+
+
+
+
 
     </LinearLayout>
 
-</RelativeLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/reciclerVideollamada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_marginBottom="50dp"
+        android:visibility="gone"
+        android:layout_marginLeft="140dp"
+        tools:ignore="MissingConstraints" />
+</LinearLayout>

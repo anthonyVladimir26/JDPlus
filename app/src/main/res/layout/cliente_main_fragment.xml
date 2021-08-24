@@ -7,18 +7,16 @@
     android:orientation="vertical">
 
 
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="60dp"
-        android:orientation="vertical">
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recicler_consultas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="184dp"
-            tools:layout_editor_absoluteY="244dp" />
-    </LinearLayout>
+            tools:layout_editor_absoluteY="244dp"
+            tools:listitem="@layout/consultas_card_view"
+            android:layout_marginTop="50dp"/>
+
 
 </RelativeLayout>

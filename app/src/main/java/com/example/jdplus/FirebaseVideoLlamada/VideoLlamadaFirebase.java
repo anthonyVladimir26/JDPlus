@@ -18,9 +18,6 @@ public class VideoLlamadaFirebase extends FirebaseMessagingService {
     @Override
     public void onNewToken(@NonNull String s) {
         super.onNewToken(s);
-
-
-
     }
 
     @Override

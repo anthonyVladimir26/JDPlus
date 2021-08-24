@@ -72,7 +72,7 @@ public class ChatFragmentCliente extends Fragment {
 
         Toast.makeText(getContext(),nombre,Toast.LENGTH_SHORT).show();
 
-        url = "http://192.168.100.59:8080/proyecto/mensajes/mostrar_usuarios_chat.php?nombreU="+nombre+"";
+        url = "http://192.168.100.69:8080/proyecto/mensajes/mostrar_usuarios_chat.php?nombreU="+nombre+"";
         //obtenerDatosMysql(url);
 
         //mostrarData();
