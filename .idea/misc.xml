@@ -3,12 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/nino_/AndroidStudioProjects/JDPlus3/app/src/main/res/drawable-v24/ic_agregar.xml" value="0.1125" />
+        <entry key="..\:/Users/nino_/AndroidStudioProjects/JDPlus3/app/src/main/res/drawable-v24/ic_dinero.xml" value="0.1125" />
+        <entry key="..\:/Users/nino_/AndroidStudioProjects/JDPlus3/app/src/main/res/layout/activity_generar_consulta.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/nino_/AndroidStudioProjects/JDPlus3/app/src/main/res/layout/cardview_videollamada.xml" value="0.1" />
         <entry key="..\:/Users/nino_/AndroidStudioProjects/JDPlus3/app/src/main/res/layout/cliente_main_fragment.xml" value="0.1" />
         <entry key="..\:/Users/nino_/AndroidStudioProjects/JDPlus3/app/src/main/res/layout/consultas_card_view.xml" value="0.1" />
         <entry key="..\:/Users/nino_/AndroidStudioProjects/JDPlus3/app/src/main/res/layout/datos_consulta_activity.xml" value="0.1" />
         <entry key="..\:/Users/nino_/AndroidStudioProjects/JDPlus3/app/src/main/res/layout/doctor_main_fragment.xml" value="0.1" />
         <entry key="..\:/Users/nino_/AndroidStudioProjects/JDPlus3/app/src/main/res/layout/prueba_video_llamada.xml" value="0.26822157434402333" />
+        <entry key="..\:/Users/nino_/AndroidStudioProjects/JDPlus3/app/src/main/res/layout/ventana_emegente_usuario.xml" value="0.17300724637681159" />
       </map>
     </option>
   </component>

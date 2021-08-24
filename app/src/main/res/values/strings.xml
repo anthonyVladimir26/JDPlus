@@ -3,4 +3,19 @@
     <string name="open">open</string>
     <string name="close">close</string>
     <string name="nombre"></string>
+
+    <string-array name="especialidades_array">
+        <item>Seleccione una especialidad</item>
+        <item>Psicología</item>
+        <item>Radiologo</item>
+        <item>Nefrologia Pediátrica</item>
+        <item>Lactancia Materna</item>
+        <item>inicio de Alimentación</item>
+        <item>Cardiologia pediátrica</item>
+        <item>Gastroenterología pediátrica</item>
+        <item>Oncología pediátrica</item>
+        <item>Hematología pediátrica</item>
+        <item>Pediatría general</item>
+
+    </string-array>
 </resources>

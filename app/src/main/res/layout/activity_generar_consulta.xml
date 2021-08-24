@@ -1,30 +1,702 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GenerarConsulta"
-    android:orientation="vertical">
-    
-    <EditText
-        android:id="@+id/chat_nombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/doctor_nombre"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#7DC3EA"
+                android:orientation="vertical"
+                >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="Cliente"
 
-    <EditText
-        android:id="@+id/cliente_nombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/subir_datos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="subir"/>
 
-</LinearLayout>
+                        />
+                    <LinearLayout
+                        android:id="@+id/layout_elegir_usuario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50sp"
+                        android:orientation="horizontal"
+
+                        tools:ignore="MissingConstraints"
+                        android:layout_marginBottom="15dp">
+
+                        <ImageView
+                            android:id="@+id/imagenUsuario"
+                            android:layout_width="30sp"
+                            android:layout_height="30sp"
+                            android:src="@drawable/ic_agregar"
+                            tools:ignore="MissingConstraints"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/nombreUsuario"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Elegir Cliente"
+                            android:textSize="25sp"
+                            android:textColor="@color/black"
+                            android:layout_gravity="center"
+                            tools:ignore="MissingConstraints"
+                            android:autoSizeTextType="uniform"
+                            android:autoSizeMinTextSize="12sp"
+                            android:autoSizeMaxTextSize="100sp"
+                            android:autoSizeStepGranularity="2sp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/datosUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    >
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="15dp">
+
+
+                        <LinearLayout
+                            android:layout_width="125dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            tools:ignore="MissingConstraints">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Genero"
+                                android:textSize="15sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/generoUsuario"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:autoSizeMaxTextSize="100sp"
+                                    android:autoSizeMinTextSize="12sp"
+                                    android:autoSizeStepGranularity="2sp"
+                                    android:autoSizeTextType="uniform"
+                                    android:textColor="@color/black"
+                                    android:enabled="false"
+                                    android:gravity="center"
+                                    android:text="genero"
+                                    android:textSize="20sp"
+                                    tools:ignore="MissingConstraints" />
+
+                                <ImageView
+                                    android:id="@+id/imagenGenero"
+                                    android:layout_width="25dp"
+
+                                    android:layout_height="match_parent"
+                                    android:src="@mipmap/femenino" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="139dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            tools:ignore="MissingConstraints">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tipo de sangre"
+                                android:textSize="15sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/tipoSangreUsuario"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:autoSizeMaxTextSize="100sp"
+                                    android:autoSizeMinTextSize="12sp"
+                                    android:autoSizeStepGranularity="2sp"
+                                    android:autoSizeTextType="uniform"
+                                    android:text="tipo de sangre"
+                                    android:textColor="@color/black"
+                                    android:enabled="false"
+                                    android:textSize="20sp"
+                                    tools:ignore="MissingConstraints" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="121dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:orientation="vertical"
+                            tools:ignore="MissingConstraints">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Edad"
+                                android:textSize="15sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/edadUsuario"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:autoSizeMaxTextSize="100sp"
+                                    android:autoSizeMinTextSize="12sp"
+                                    android:autoSizeStepGranularity="2sp"
+                                    android:autoSizeTextType="uniform"
+                                    android:textColor="@color/black"
+                                    android:text="edad"
+                                    android:enabled="false"
+                                    android:textSize="20sp"
+                                    tools:ignore="MissingConstraints" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Correo"
+                            android:textSize="15sp"
+                            />
+
+                        <EditText
+                            android:id="@+id/correoUsuario"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:autoSizeMaxTextSize="100sp"
+                            android:autoSizeMinTextSize="12sp"
+                            android:autoSizeStepGranularity="2sp"
+                            android:autoSizeTextType="uniform"
+                            android:text="Correo"
+                            android:textColor="@color/black"
+                            android:enabled="false"
+                            android:textSize="20sp"
+                            tools:ignore="MissingConstraints" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="15dp"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="211dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_gravity="start"
+                            android:gravity="start">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Telefono"
+                                android:textSize="15sp" />
+
+                            <EditText
+                                android:id="@+id/telefonoUsuario"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:autoSizeMaxTextSize="100sp"
+                                android:autoSizeMinTextSize="12sp"
+                                android:autoSizeStepGranularity="2sp"
+                                android:autoSizeTextType="uniform"
+                                android:enabled="false"
+                                android:text="Telefono"
+                                android:textColor="@color/black"
+                                android:textSize="20sp"
+                                tools:ignore="MissingConstraints" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="185dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Fecha de nacimiento"
+                                android:textSize="15sp" />
+
+                            <EditText
+                                android:id="@+id/fechaNacimientoUsuario"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:autoSizeMaxTextSize="100sp"
+                                android:autoSizeMinTextSize="12sp"
+                                android:autoSizeStepGranularity="2sp"
+                                android:autoSizeTextType="uniform"
+                                android:enabled="false"
+                                android:text="fecha nacimiento"
+                                android:textColor="@color/black"
+                                android:textSize="20sp"
+                                tools:ignore="MissingConstraints" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="15dp"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="¿El cliente cuenta alguna enfermedad?"
+                                android:layout_gravity="center"
+                                android:textSize="15sp"
+                                android:textColor="@color/black"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioGroup
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/rbtnEnfermedadSi"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Si" />
+
+                                    <RadioButton
+                                        android:id="@+id/rbtnEnfermedadNo"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:checked="true"
+                                        android:text="No" />
+                                </RadioGroup>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+
+
+                    <EditText
+                        android:id="@+id/edtEnfermedadUsuario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15sp"
+                        android:layout_marginRight="15sp"
+                        android:hint="Ingrese las enfermedades"
+                        android:visibility="gone"
+                        android:layout_marginLeft="15sp"
+                        />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="15dp"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="¿El cliente cuenta esta medicado?"
+                                android:layout_gravity="center"
+                                android:textSize="15sp"
+                                android:textColor="@color/black"
+                                />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center"
+                                >
+                                <RadioGroup
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <RadioButton
+                                        android:id="@+id/rbtnMedicinaSi"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Si" />
+
+                                    <RadioButton
+                                        android:id="@+id/rbtnMedicinaNo"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:checked="true"
+                                        android:text="No" />
+
+                                </RadioGroup>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+
+
+                    <EditText
+                        android:id="@+id/edtMedicinaUsuario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15sp"
+                        android:layout_marginRight="15sp"
+                        android:layout_marginLeft="15sp"
+                        android:visibility="gone"
+                        android:hint="Ingrese su medicacion"
+                        />
+
+                </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="Doctor"
+
+                    />
+                <LinearLayout
+                    android:id="@+id/layout_elegir_doctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:ignore="MissingConstraints"
+                    >
+
+
+                    <ImageView
+                        android:id="@+id/imagenDoctor"
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
+                        android:src="@drawable/ic_agregar"
+                        tools:ignore="MissingConstraints"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/nombreDoctor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Elegir Doctor"
+                        android:textSize="25sp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:enabled="false"
+                        tools:ignore="MissingConstraints"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="100sp"
+                        android:autoSizeStepGranularity="2sp"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="211dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Fecha de la cita"
+                        android:textSize="15sp"
+
+                        />
+
+                    <LinearLayout
+                        android:layout_width="183dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        tools:ignore="MissingConstraints">
+
+
+                        <EditText
+                            android:id="@+id/edtFechaCita"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:autoSizeMaxTextSize="100sp"
+                            android:autoSizeMinTextSize="12sp"
+                            android:autoSizeStepGranularity="2sp"
+                            android:autoSizeTextType="uniform"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:inputType="date"
+                            android:maxLines="1"
+                            android:minWidth="100dp"
+                            android:textColor="@color/black"
+                            android:textSize="25sp"
+                            tools:ignore="MissingConstraints" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="181dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="vertical"
+                    android:layout_gravity="end"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hora de la cita"
+                        android:textSize="15sp"
+
+                        />
+
+
+
+                    <EditText
+                        android:id="@+id/edtHoraCita"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:autoSizeMaxTextSize="100sp"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:minWidth="100dp"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        android:focusable="false"
+                        tools:ignore="MissingConstraints"
+                        android:inputType="time"
+                        android:clickable="true"
+                        android:maxLines="1"
+                        android:layout_marginRight="20sp"
+                        android:layout_marginLeft="20sp"/>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="15dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Especialidad:"
+                        />
+
+                    <Spinner
+                        android:id="@+id/spinnerEspecialidades"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#9b9b9b"
+                        android:layout_weight="2"
+
+                        android:gravity="center"
+
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15dp"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Costo de la consulta"
+                    android:textSize="15sp"
+
+                    />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="43dp"
+                        android:layout_marginLeft="30dp"
+                        android:src="@drawable/ic_dinero" />
+
+                    <EditText
+                        android:id="@+id/edtCostoCita"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:autoSizeMaxTextSize="100sp"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:minWidth="100dp"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        android:inputType="numberDecimal"
+                        android:layout_marginRight="50dp"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+
+
+
+            <Button
+                android:id="@+id/btnCrearConsulta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Crear consulta"
+                />
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+</RelativeLayout>

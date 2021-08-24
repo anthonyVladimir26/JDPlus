@@ -47,7 +47,7 @@ public class MainFragmentAsistente extends Fragment {
 
 
 
-    String url ="http://192.168.100.59:8080/archivosPHP/cliente/obtener_consultas_adulto.php";
+    String url ="http://192.168.1.69:8080/archivosPHP/cliente/obtener_consultas_adulto.php";
 
     @Nullable
     @Override
@@ -58,15 +58,12 @@ public class MainFragmentAsistente extends Fragment {
         recyclerView = view.findViewById(R.id.recicler_consultas);
         creaConsulta = view.findViewById(R.id.crear_consulta);
 
-        creaConsulta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent( getContext(), GenerarConsulta.class);
-                startActivity(intent);
-            }
+        creaConsulta.setOnClickListener(v -> {
+            Intent intent = new Intent( getContext(), GenerarConsulta.class);
+            startActivity(intent);
         });
 
-        //obtenerDatos(url);
+        obtenerDatos(url);
         return view;
     }
 

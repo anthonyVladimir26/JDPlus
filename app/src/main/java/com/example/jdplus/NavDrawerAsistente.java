@@ -157,22 +157,22 @@ public class NavDrawerAsistente extends AppCompatActivity implements NavigationV
         return false;
     }
 
-        public void cerrarSesion(){
-            FirebaseFirestore database = FirebaseFirestore.getInstance();
-            DocumentReference documentReference = database.collection("asistentes").document(id);
+    public void cerrarSesion(){
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        DocumentReference documentReference = database.collection("usuarios").document(id);
 
-            HashMap<String, Object> updates = new HashMap<>();
-            updates.put("fcm_token", FieldValue.delete());
-            documentReference.update(updates)
-                    .addOnSuccessListener(aVoid -> {
-                        guardarDatosUsuarioActual(null, null,null,null,false);
+        HashMap<String, Object> updates = new HashMap<>();
+        updates.put("fcm_token", FieldValue.delete());
+        documentReference.update(updates)
+                .addOnSuccessListener(aVoid -> {
+                    guardarDatosUsuarioActual(null, null,null,null,false);
 
-                        Intent intentAsistente = new Intent(NavDrawerAsistente.this, PresentacionActivity.class);
-                        startActivityForResult(intentAsistente,0);
-                    })
-                    .addOnFailureListener(e -> Toast.makeText(NavDrawerAsistente.this, "error "+e.getMessage()+"al cerrar sesion", Toast.LENGTH_SHORT).show());
+                    Intent intentAsistente = new Intent(NavDrawerAsistente.this, PresentacionActivity.class);
+                    startActivityForResult(intentAsistente,0);
+                })
+                .addOnFailureListener(e -> Toast.makeText(NavDrawerAsistente.this, "error "+e.getMessage()+"al cerrar sesion", Toast.LENGTH_SHORT).show());
 
-        }
+    }
 
         public void guardarDatosUsuarioActual(String id ,String usuario ,String tipoUsuario, String clave, boolean sesionIniciada) {
             SharedPreferences sharedPreferences = getSharedPreferences("datos_usuario", Context.MODE_PRIVATE);
