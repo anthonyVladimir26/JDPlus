@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "864427371964",
+    "firebase_url": "https://junodoctor-70efd-default-rtdb.firebaseio.com",
+    "project_id": "junodoctor-70efd",
+    "storage_bucket": "junodoctor-70efd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864427371964:android:a5a5fa0a29ebdae9b80fb9",
+        "android_client_info": {
+          "package_name": "com.example.crearusuariofirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864427371964-fckid5761heekgd0uj06n0n7g4unfto7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcJpzbfZ9ZDex3YZ9d0UlLLLEUu3fH1eA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864427371964-fckid5761heekgd0uj06n0n7g4unfto7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864427371964:android:c3d17b68086273a6b80fb9",
+        "android_client_info": {
+          "package_name": "com.example.jdplus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864427371964-fckid5761heekgd0uj06n0n7g4unfto7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcJpzbfZ9ZDex3YZ9d0UlLLLEUu3fH1eA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864427371964-fckid5761heekgd0uj06n0n7g4unfto7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864427371964:android:a4a064f65a5098a4b80fb9",
+        "android_client_info": {
+          "package_name": "com.example.juno"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864427371964-fckid5761heekgd0uj06n0n7g4unfto7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcJpzbfZ9ZDex3YZ9d0UlLLLEUu3fH1eA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864427371964-fckid5761heekgd0uj06n0n7g4unfto7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
