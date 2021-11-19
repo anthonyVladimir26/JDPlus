@@ -1,4 +1,4 @@
-package com.example.jdplus;
+package com.example.jdplus.Activities;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -20,22 +20,16 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.jdplus.FragmentsAsistente.FragmentHistorialClinico;
-import com.example.jdplus.FragmentsAsistente.MainFragmentAsistente;
-import com.example.jdplus.FragmentsCliente.MainFragmentCliente;
+import com.example.jdplus.FragmentsAsistente.ConsultasFragmentAsistente;
+import com.example.jdplus.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.iid.FirebaseInstanceIdReceiver;
-import com.google.firebase.iid.internal.FirebaseInstanceIdInternal;
-import com.google.firebase.installations.FirebaseInstallations;
 import com.google.firebase.messaging.FirebaseMessaging;
-
-import org.w3c.dom.Document;
 
 import java.util.HashMap;
 
@@ -82,11 +76,12 @@ public class NavDrawerAsistente extends AppCompatActivity implements NavigationV
         actionBarDrawerToggle.syncState();
 
 
+
         //cargar Fragments
 
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.container, new MainFragmentAsistente());
+        fragmentTransaction.add(R.id.container, new ConsultasFragmentAsistente());
         fragmentTransaction.commit();
         toolbar.setTitle("consultas");
 
@@ -117,7 +112,7 @@ public class NavDrawerAsistente extends AppCompatActivity implements NavigationV
         if (item.getItemId() == R.id.consultas) {
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container, new MainFragmentAsistente());
+            fragmentTransaction.replace(R.id.container, new ConsultasFragmentAsistente());
             fragmentTransaction.commit();
 
             toolbar.setTitle("consultas");
@@ -169,6 +164,7 @@ public class NavDrawerAsistente extends AppCompatActivity implements NavigationV
 
                     Intent intentAsistente = new Intent(NavDrawerAsistente.this, PresentacionActivity.class);
                     startActivityForResult(intentAsistente,0);
+                    FirebaseAuth.getInstance().signOut();
                 })
                 .addOnFailureListener(e -> Toast.makeText(NavDrawerAsistente.this, "error "+e.getMessage()+"al cerrar sesion", Toast.LENGTH_SHORT).show());
 
@@ -190,9 +186,6 @@ public class NavDrawerAsistente extends AppCompatActivity implements NavigationV
 
         if (keyCode== event.KEYCODE_BACK){
 
-            if (!sesion){
-                cerrarSesion();
-            }
 
             finishAffinity();
         }
@@ -204,13 +197,13 @@ public class NavDrawerAsistente extends AppCompatActivity implements NavigationV
 
 
         FirebaseFirestore database = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = database.collection("asistentes").document(id);
+        DocumentReference documentReference = database.collection("usuarios").document(id);
         documentReference.update("fcm_token",token)
                 .addOnSuccessListener(aVoid -> {
-                    //Toast.makeText(this, "creado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "creado", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
-                    //Toast.makeText(this, "no se pudo crear por: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "no se pudo crear por: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
 
 

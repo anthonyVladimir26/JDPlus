@@ -1,21 +1,17 @@
-package com.example.jdplus;
+package com.example.jdplus.Activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -26,20 +22,16 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.example.jdplus.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.core.Constants;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Document;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,8 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     String id,usuario,tipo, clave, nombre;
 
-    CheckBox mantenerSesion;
-    boolean start = false;
+
     RequestQueue requestQueue;
 
     FirebaseAuth firebaseAuth;
@@ -67,14 +58,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         SharedPreferences sharedPreferences = getSharedPreferences("datos_usuario", Context.MODE_PRIVATE);
-        boolean sesion = sharedPreferences.getBoolean("sesion",false);
         String tipo  =sharedPreferences.getString("tipo",null);
 
-        if (firebaseAuth.getCurrentUser() != null && sesion){
+        if (firebaseAuth.getCurrentUser() != null ){
             entrarInterfaz(tipo);
+
         }
         else {
-            FirebaseAuth.getInstance().signOut();
+
 
         }
     }
@@ -84,11 +75,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //vinculamos con el layout
         edtUsuario = findViewById(R.id.usuario);
         edtContrasena = findViewById(R.id.contrasena);
         btnLogin = findViewById(R.id.boton);
-        mantenerSesion = findViewById(R.id.mantenerSesion);
+
         progressBarInicio = findViewById(R.id.inicioProgressBar);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -102,17 +94,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!edtContrasena.getText().toString().isEmpty() || !edtUsuario.getText().toString().isEmpty()) {
 
-                    if (mantenerSesion.isChecked()) {
-                        start = true;
-                    }
-                    else {
-                        start = false;
-                    }
+
 
                     //loginCliente("http://"+ip+":8080/proyecto/cliente/validar_usuario_cliente.php");
 
 
-                    String email= edtUsuario.getText().toString()+"@junodoctor.com";
+                    String email= edtUsuario.getText().toString()+"@junoDoctor.com";
 
                     String contrasena= edtContrasena.getText().toString();
 
@@ -146,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                                         nombre = documentSnapshot.getString("nombre");
                                         tipo = documentSnapshot.getString("tipo");
                                         id = firebaseAuth.getUid();
-                                        guardarDatosUsuarioActual(id, usuario, tipo, clave, start, nombre);
+                                        guardarDatosUsuarioActual(id, usuario, tipo, clave,  nombre);
                                         entrarInterfaz(tipo);
                                     }
                                 }
@@ -170,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 if (!response.isEmpty()){
 
-                    datosClientes("http://"+ip+":8080/proyecto/cliente/buscar_datos_cliente.php?usuario="+edtUsuario.getText().toString()+"&password="+edtContrasena.getText().toString()+"");
+                    datosClientes("http://"+ip+"/proyecto/cliente/buscar_datos_cliente.php?usuario="+edtUsuario.getText().toString()+"&password="+edtContrasena.getText().toString()+"");
 
                 }
                 else {
@@ -304,7 +291,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void guardarDatosUsuarioActual(String id,String usuario ,String tipoUsuario, String clave, boolean sesionIniciada,String nombre) {
+    public void guardarDatosUsuarioActual(String id,String usuario ,String tipoUsuario, String clave, String nombre) {
         SharedPreferences sharedPreferences = getSharedPreferences("datos_usuario", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("id",id);
@@ -312,14 +299,9 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("nombre", nombre);
         editor.putString("tipo", tipoUsuario);
         editor.putString("clave",clave);
-        editor.putBoolean("sesion", sesionIniciada);
+
         editor.apply();
 
-    }
-
-    public String mostrarDatosUsuarioActual(String key){
-        SharedPreferences sharedPreferences = getSharedPreferences("datos_usuario", Context.MODE_PRIVATE);
-        return sharedPreferences.getString(key,"false");
     }
 
     public void entrarInterfaz (String tipo){

@@ -1,4 +1,4 @@
-package com.example.jdplus;
+package com.example.jdplus.Activities;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -22,9 +22,11 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.jdplus.FragmentsDoctor.ChatFragmentDoctor;
 import com.example.jdplus.FragmentsDoctor.HistorialClinico;
 import com.example.jdplus.FragmentsDoctor.MainFragmentDoctor;
+import com.example.jdplus.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -82,22 +84,19 @@ public class NavDrawerDoctor extends AppCompatActivity implements NavigationView
 
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.container, new MainFragmentDoctor());
+        fragmentTransaction.add(R.id.container, new ChatFragmentDoctor());
         fragmentTransaction.commit();
 
         //crear token fcm
         FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(new OnCompleteListener<String>() {
-                    @Override
-                    public void onComplete(@NonNull Task<String> task) {
-                        if (task.isSuccessful() && task.getResult()!= null) {
-                            // Get new FCM registration token
-                            String token = task.getResult();
-                            sendFCMTokenToDatabase(token);
-                        }
-
-
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful() && task.getResult()!= null) {
+                        // Get new FCM registration token
+                        String token = task.getResult();
+                        sendFCMTokenToDatabase(token);
                     }
+
+
                 });
     }
 
@@ -157,9 +156,10 @@ public class NavDrawerDoctor extends AppCompatActivity implements NavigationView
 
         return false;
     }
+
     public void cerrarSesion(){
         FirebaseFirestore database = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = database.collection("doctores").document(id);
+        DocumentReference documentReference = database.collection("usuarios").document(id);
 
         HashMap<String, Object> updates = new HashMap<>();
         updates.put("fcm_token", FieldValue.delete());
@@ -169,6 +169,7 @@ public class NavDrawerDoctor extends AppCompatActivity implements NavigationView
 
                     Intent intentAsistente = new Intent(NavDrawerDoctor.this, PresentacionActivity.class);
                     startActivityForResult(intentAsistente,0);
+                    FirebaseAuth.getInstance().signOut();
                 })
                 .addOnFailureListener(e -> Toast.makeText(NavDrawerDoctor.this, "error "+e.getMessage()+"al cerrar sesion", Toast.LENGTH_SHORT).show());
 
@@ -190,10 +191,6 @@ public class NavDrawerDoctor extends AppCompatActivity implements NavigationView
 
         if (keyCode== event.KEYCODE_BACK){
 
-            if (!sesion){
-                cerrarSesion();
-            }
-
             finishAffinity();
         }
 
@@ -204,13 +201,13 @@ public class NavDrawerDoctor extends AppCompatActivity implements NavigationView
 
 
         FirebaseFirestore database = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = database.collection("doctores").document(id);
+        DocumentReference documentReference = database.collection("usuarios").document(id);
         documentReference.update("fcm_token",token)
                 .addOnSuccessListener(aVoid -> {
-                    //Toast.makeText(this, "creado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "creado", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
-                    //Toast.makeText(this, "no se pudo crear por: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "no se pudo crear por: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
 
     }

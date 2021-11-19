@@ -14,7 +14,6 @@
         android:textSize="30sp"
         android:textStyle="bold"
         android:background="#474AFF"
-        android:text="@string/nombre"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/layout_invitacion_videollamada"
-    tools:context=".InvitacionVideollamada">
+    tools:context=".Activities.InvitacionVideollamada">
 
     <ImageView
         android:id="@+id/imagenAceptarVideollamada"
@@ -68,17 +68,16 @@
 
     <ImageView
         android:id="@+id/rechazarVideollamadaimg"
-        android:layout_width="40sp"
-        android:layout_height="40sp"
+        android:layout_width="28dp"
+        android:layout_height="36dp"
         android:layout_marginEnd="60sp"
         android:layout_marginBottom="50sp"
         android:background="@drawable/background_rechazar_videollamada"
         android:contentDescription="@string/app_name"
         android:padding="8sp"
         android:src="@drawable/ic_rechazar_videollamda"
-        app:tint="@color/colorIconos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-       />
+        app:tint="@color/colorIconos" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

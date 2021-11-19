@@ -1,4 +1,4 @@
-package com.example.jdplus;
+package com.example.jdplus.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,12 +20,8 @@ import com.example.jdplus.utilities.Constans;
 import com.example.jdplus.network.ApiClient;
 import com.example.jdplus.network.ApiService;
 import com.example.jdplus.objetos.Usuario;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.core.Constants;
 import com.google.firebase.messaging.FirebaseMessaging;
 
-import org.jitsi.meet.sdk.JitsiMeet;
 import org.jitsi.meet.sdk.JitsiMeetActivity;
 import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
 import org.json.JSONArray;

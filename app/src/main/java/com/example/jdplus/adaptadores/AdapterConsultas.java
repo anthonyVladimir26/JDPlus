@@ -51,7 +51,7 @@ public class AdapterConsultas  extends RecyclerView.Adapter<AdapterConsultas.Vie
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String nombre = listVerConsultas.get(position).getNombre();
+        /*String nombre = listVerConsultas.get(position).getNombre();
         String dia = listVerConsultas.get(position).getFecha_cita();
         String hora = listVerConsultas.get(position).getHora_cita();
         String especialidad = listVerConsultas.get(position).getTipo_consulta();
@@ -59,7 +59,7 @@ public class AdapterConsultas  extends RecyclerView.Adapter<AdapterConsultas.Vie
         holder.nombrePaciente.setText(nombre);
         holder.dia.setText(dia);
         holder.hora.setText(hora);
-        holder.especialidad.setText(especialidad);
+        holder.especialidad.setText(especialidad);*/
     }
 
     @Override
@@ -73,10 +73,10 @@ public class AdapterConsultas  extends RecyclerView.Adapter<AdapterConsultas.Vie
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            nombrePaciente = itemView.findViewById(R.id.nombrePaciente);
+            /*nombrePaciente = itemView.findViewById(R.id.nombrePaciente);
             hora = itemView.findViewById(R.id.horaConsulta);
             especialidad = itemView.findViewById(R.id.especialidad);
-            dia = itemView.findViewById(R.id.diaConsulta);
+            dia = itemView.findViewById(R.id.diaConsulta);*/
         }
     }
 }

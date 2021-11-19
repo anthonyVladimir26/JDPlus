@@ -2,8 +2,9 @@
     <string name="app_name">JDPlus</string>
     <string name="open">open</string>
     <string name="close">close</string>
-    <string name="nombre"></string>
 
+    <string name="ip">192.168.1.65:8080</string>
+    
     <string-array name="especialidades_array">
         <item>Seleccione una especialidad</item>
         <item>Psicología</item>
@@ -16,6 +17,22 @@
         <item>Oncología pediátrica</item>
         <item>Hematología pediátrica</item>
         <item>Pediatría general</item>
-
     </string-array>
+
+    <string-array name="horas_array">
+        <item>Seleccione una hora</item>
+        <item>9 a.m</item>
+        <item>10 a.m</item>
+        <item>11 a.m</item>
+        <item>12 p.m</item>
+        <item>1 p.m</item>
+        <item>2 p.m</item>
+        <item>3 p.m</item>
+        <item>4 p.m</item>
+        <item>5 p.m</item>
+        <item>6 p.m</item>
+        <item>7 p.m</item>
+        <item>8 p.m</item>
+    </string-array>
+
 </resources>

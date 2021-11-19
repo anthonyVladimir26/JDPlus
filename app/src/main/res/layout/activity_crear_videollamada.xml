@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:configChanges="orientation|screenSize"
     android:background="@drawable/layout_invitacion_videollamada"
-    tools:context=".CrearVideollamada">
+    tools:context=".Activities.CrearVideollamada">
 
     <ImageView
         android:id="@+id/imagenAceptarVideollamada"

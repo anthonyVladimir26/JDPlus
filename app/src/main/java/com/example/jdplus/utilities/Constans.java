@@ -11,6 +11,7 @@ public class Constans {
     public static final String REMOTE_INVITATION = "invitation";
     public static final String REMOTE_MEETING_TYPE = "meetingType";
     public static final String REMOTE_INVITER_TOKEN = "inviterToken";
+
     public static final String REMOTE_DATA = "data";
     public static final String REMOTE_REGISTRATION_IDS = "registration_ids";
 
@@ -21,6 +22,17 @@ public class Constans {
     public static final String REMOTE_INVITATION_CANCELLED = "cancelled";
 
     public static final String REMOTE_MEETING_ROOM = "meetingRoom";
+    public static String roomSelected="";
+
+    public static final String NOMBRE_CHAT= "nombreUsuario";
+
+
+    public static final String TIPO_MENSAJE_CHAT ="tipoUltimoMensaje";
+    public static final String ULTIMO_MENSAJE_CHAT ="ultimoMensaje";
+    public static final String HORA_ULTIMO_MENSAJE ="horaUltimoMensaje";
+
+
+    public static final String NUMERO_MENSAJES_NUEVOS ="numeroMensajeNuevos";
 
 
     public static HashMap<String,String> obtenerClaveCloudMessaging(){

@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recicler_consultas"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refresh_consulta_cliente"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="184dp"
-            tools:layout_editor_absoluteY="244dp"
-            tools:listitem="@layout/consultas_card_view"
-            android:layout_marginTop="50dp"/>
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
 
 
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recicler_consultas_cliente"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:ignore="MissingConstraints"
+                            >
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </RelativeLayout>

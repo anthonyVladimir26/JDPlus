@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.jdplus.GenerarConsulta;
+import com.example.jdplus.Activities.GenerarConsulta;
 import com.example.jdplus.R;
 import com.example.jdplus.objetos.UsuarioConsulta;
 

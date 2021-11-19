@@ -28,6 +28,9 @@
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/file_paths" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -39,35 +42,39 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".CrearVideollamada"
+        <activity android:name=".Activities.ImagenChatActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"></activity>
+        <activity android:name=".Activities.CrearVideollamada"
             android:theme="@style/Theme.PruebaAplicacion.NoActionBar"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".InvitacionVideollamada"
+        <activity
+            android:name=".Activities.BandejaMensajesActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.Light" />
+        <activity android:name=".Activities.InvitacionVideollamada"
             android:theme="@style/Theme.PruebaAplicacion.NoActionBar"
             android:screenOrientation="portrait"/>
 
-        <activity
-            android:name=".BandejaDeMensajes"
-            android:theme="@style/Theme.PruebaAplicacion.NoActionBar" />
-        <activity android:name=".GenerarConsulta"
+
+        <activity android:name=".Activities.GenerarConsulta"
             android:theme="@style/Theme.AppCompat.Light"/>
         <activity
-            android:name=".PresentacionActivity"
+            android:name=".Activities.PresentacionActivity"
             android:theme="@style/Theme.PruebaAplicacion.NoActionBar" />
         <activity
-            android:name=".DatosConsulta"
+            android:name=".Activities.DatosConsulta"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
-            android:name=".NavDrawerCliente"
+            android:name=".Activities.NavDrawerCliente"
             android:theme="@style/Theme.PruebaAplicacion.NoActionBar" />
         <activity
-            android:name=".NavDrawerAsistente"
+            android:name=".Activities.NavDrawerAsistente"
             android:theme="@style/Theme.PruebaAplicacion.NoActionBar" />
         <activity
-            android:name=".NavDrawerDoctor"
+            android:name=".Activities.NavDrawerDoctor"
             android:theme="@style/Theme.PruebaAplicacion.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:theme="@style/Theme.PruebaAplicacion.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

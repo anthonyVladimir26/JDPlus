@@ -1,4 +1,4 @@
-package com.example.jdplus;
+package com.example.jdplus.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -21,9 +21,11 @@ import android.widget.Toast;
 
 import com.example.jdplus.FragmentsCliente.ChatFragmentCliente;
 import com.example.jdplus.FragmentsCliente.MainFragmentCliente;
+import com.example.jdplus.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -41,8 +43,6 @@ public class NavDrawerCliente extends AppCompatActivity implements NavigationVie
     String nombre ;
     String id ;
     boolean sesion ;
-
-    //cambiar de fragments variables
 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
@@ -77,7 +77,7 @@ public class NavDrawerCliente extends AppCompatActivity implements NavigationVie
 
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction= fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.container, new MainFragmentCliente());
+        fragmentTransaction.add(R.id.container, new ChatFragmentCliente());
         fragmentTransaction.commit();
 
         //crear token fcm
@@ -110,7 +110,7 @@ public class NavDrawerCliente extends AppCompatActivity implements NavigationVie
             fragmentTransaction.replace(R.id.container, new MainFragmentCliente());
             fragmentTransaction.commit();
 
-            toolbar.setTitle("usuario");
+            toolbar.setTitle("consultas");
         }
 
         if (item.getItemId()  == R.id.chat ){
@@ -160,6 +160,7 @@ public class NavDrawerCliente extends AppCompatActivity implements NavigationVie
 
                     Intent intentAsistente = new Intent(NavDrawerCliente.this, PresentacionActivity.class);
                     startActivityForResult(intentAsistente,0);
+                    FirebaseAuth.getInstance().signOut();
                 })
                 .addOnFailureListener(e -> Toast.makeText(NavDrawerCliente.this, "error "+e.getMessage()+"al cerrar sesion", Toast.LENGTH_SHORT).show());
 
@@ -180,11 +181,6 @@ public class NavDrawerCliente extends AppCompatActivity implements NavigationVie
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         if (keyCode == event.KEYCODE_BACK) {
-
-            if (!sesion) {
-                cerrarSesion();
-            }
-
             finishAffinity();
         }
         return super.onKeyDown(keyCode, event);

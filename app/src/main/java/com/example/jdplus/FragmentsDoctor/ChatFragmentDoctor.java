@@ -1,8 +1,7 @@
 package com.example.jdplus.FragmentsDoctor;
 
-import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,11 +20,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.jdplus.BandejaDeMensajes;
 import com.example.jdplus.R;
-import com.example.jdplus.Sqlite.CreaBDSqlite;
-import com.example.jdplus.Sqlite.SqliteOperacionesUsuarioChat;
-import com.example.jdplus.adaptadores.AdapterUsuarios;
+import com.example.jdplus.adaptadores.AdapterListaChatUsuarios;
+import com.example.jdplus.adaptadores.AdapterUsuario;
+import com.example.jdplus.objetos.Usuarios;
+import com.example.jdplus.objetos.UsuariosMensajes;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 
 import org.json.JSONArray;
@@ -33,120 +37,91 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class ChatFragmentDoctor extends Fragment {
 
+    FirebaseDatabase firebaseDatabase;
+
+    String tipo;
+    String clave;
+
     RecyclerView recyclerView;
-    //ArrayList<Usuarios> listMostrar;
-    AdapterUsuarios adaptador;
+    ArrayList<UsuariosMensajes> listaUsuarios;
+    AdapterListaChatUsuarios adapterListaChatUsuarios;
 
-    SqliteOperacionesUsuarioChat operacionesUsuarioChat;
-
-    boolean mostrarUsuarios = true;
-
-    boolean mandarSqlite = false;
-
-
-    String url = "http://192.168.1.66:8080/proyecto/cliente/obtener_usuarios.php";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.doctor_chat_fragment, container, false);
-        //listMostrar = new ArrayList<Usuarios>();
+
+
+
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("datos_usuario", Context.MODE_PRIVATE);
+        clave = sharedPreferences.getString("clave","");
+        tipo= sharedPreferences.getString("tipo","");
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
         recyclerView = view.findViewById(R.id.chatRecyclerView);
 
-        operacionesUsuarioChat= new SqliteOperacionesUsuarioChat(getContext());
 
-        obtenerDatosMysql(url);
-        //mostrarDatosSqlite();
-        //mostrarData();
+        listaUsuarios = new ArrayList<>();
+        adapterListaChatUsuarios = new AdapterListaChatUsuarios(getContext(),listaUsuarios);
+        recyclerView.setAdapter(adapterListaChatUsuarios);
+
+        mostrarDatos();
 
         return view;
     }
 
-    public void obtenerDatosMysql(String URL) {
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+
+    void mostrarDatos(){
+        Query ultimoMensajeQuery=firebaseDatabase.getReference().child("chats").child(clave).orderByChild("horaUltimoMensaje")
+                .startAt(1);
+
+        ultimoMensajeQuery.addValueEventListener(new ValueEventListener() {
+
             @Override
-            public void onResponse(JSONArray response) {
-                JSONObject jsonObject = null;
-                for (int i = 0; i < response.length(); i++) {
-                    try {
-                        jsonObject = response.getJSONObject(i);
-
-                        String id = jsonObject.getString("Id");
-                        String usuario = jsonObject.getString("usuario");
-                        String nombre = jsonObject.getString("Nombre");
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listaUsuarios.removeAll(listaUsuarios);
+                Stack<UsuariosMensajes> usuariosMensajesStack  = new Stack<>();
 
 
 
 
-                        boolean existeUser = operacionesUsuarioChat.nombreUsuario(usuario);
 
-                        if (existeUser ==false){
-                            //insertarBDSqliteUsuario(usuario, nombre);
-                        }
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
-                        //listMostrar.add(new usuarios(id, usuario, nombre));
+                    String nombre = dataSnapshot.child("nombreUsuario").getValue(String.class);
+                    String claveFirebase = dataSnapshot.getKey();
+                    String ultimoMensaje = dataSnapshot.child("ultimoMensaje").getValue(String.class);
+
+                    int tipoUltimoMensaje = dataSnapshot.child("tipoUltimoMensaje").getValue(Integer.class);
+                    int numeroMensajeNuevos = dataSnapshot.child("numeroMensajeNuevos").getValue(Integer.class);
+
+                    Long horaUltimoMensaje = dataSnapshot.child("horaUltimoMensaje").getValue(Long.class);
 
 
-                    } catch (JSONException e) {
 
-                        Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
+                    UsuariosMensajes usuariosMensajes = new UsuariosMensajes(nombre, claveFirebase, ultimoMensaje, tipoUltimoMensaje, horaUltimoMensaje,numeroMensajeNuevos);
+
+                    usuariosMensajesStack.push(usuariosMensajes);
                 }
 
+                while (!usuariosMensajesStack.isEmpty()){ listaUsuarios.add(usuariosMensajesStack.pop()); }
+
+
+                adapterListaChatUsuarios.notifyDataSetChanged();
+
+
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
-                //              Toast.makeText(getContext(), error.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        requestQueue.add(jsonArrayRequest);
-    }
-
-
-    /*public void mostrarData() {
-
-
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adaptador = new AdapterUsuarios(getContext(), operacionesUsuarioChat.mostrarUsuarios());
-        recyclerView.setAdapter(adaptador);
-        adaptador.setonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), operacionesUsuarioChat.mostrarUsuarios().get(recyclerView.getChildAdapterPosition(v)).getNombre(), Toast.LENGTH_SHORT).show();
-
-                String id = operacionesUsuarioChat.mostrarUsuarios().get(recyclerView.getChildAdapterPosition(v)).getId()+"";
-                String usuario = operacionesUsuarioChat.mostrarUsuarios().get(recyclerView.getChildAdapterPosition(v)).getUsuario();
-                String nombre = operacionesUsuarioChat.mostrarUsuarios().get(recyclerView.getChildAdapterPosition(v)).getNombre();
-
-                Intent intent = new Intent(getContext(), BandejaDeMensajes.class);
-                intent.putExtra("id", id);
-                intent.putExtra("usuario", usuario);
-                intent.putExtra("nombre", nombre);
-                startActivity(intent);
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
 
-
-
     }
-
-    public void insertarBDSqliteUsuario (String usuario, String nombre) {
-
-
-        operacionesUsuarioChat.insertarusuarios_chat(usuario,nombre);
-
-    }*/
-
-
-
-
-
 }

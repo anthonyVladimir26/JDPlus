@@ -4,83 +4,316 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/datosNinoLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#F4511E"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="Datos del niño"
+                    android:textSize="20dp"
+
+                    />
+
+                <EditText
+                    android:id="@+id/edtNombreNino"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="nombre" />
+
+                <EditText
+                    android:id="@+id/edtFechaNacimientoNino"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Fecha de nacimiento" />
+
+                <EditText
+                    android:id="@+id/edtTipoSangreNino"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tipo de sangre" />
+
+                <EditText
+                    android:id="@+id/edtEdadNino"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="edad" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="¿El niño tiene alguna enfermedad?"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <RadioGroup
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/rbtnEnfermedadNinoSi"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Si" />
+
+                                <RadioButton
+                                    android:id="@+id/rbtnEnfermedadNinoNo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:checked="true"
+                                    android:text="No" />
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/edtEnfermedadNino"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15sp"
+                            android:layout_marginRight="15sp"
+                            android:layout_marginBottom="15sp"
+                            android:hint="Ingrese las enfermedades"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="¿El niño tiene alguna medicacion?"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <RadioGroup
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/rbtnMedicinaNinoSi"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Si" />
+
+                                <RadioButton
+                                    android:id="@+id/rbtnMedicinaNinoNo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:checked="true"
+                                    android:text="No" />
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/edtMedicinaNino"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15sp"
+                            android:layout_marginRight="15sp"
+                            android:layout_marginBottom="15sp"
+                            android:hint="Ingrese las enfermedades"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="¿El niño tiene algun hermano?"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <RadioGroup
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/rbtnHermanoSi"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Si" />
+
+                                <RadioButton
+                                    android:id="@+id/rbtnHermanoNo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:checked="true"
+                                    android:text="No" />
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/edtHermanoNino"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15sp"
+                            android:layout_marginRight="15sp"
+                            android:layout_marginBottom="15sp"
+                            android:hint="Ingrese los datos del hermano"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#7DC3EA"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15sp"
                         android:text="Cliente"
+                        android:textSize="15sp"
 
 
                         />
+
                     <LinearLayout
                         android:id="@+id/layout_elegir_usuario"
                         android:layout_width="wrap_content"
                         android:layout_height="50sp"
-                        android:orientation="horizontal"
+                        android:layout_marginBottom="15dp"
 
-                        tools:ignore="MissingConstraints"
-                        android:layout_marginBottom="15dp">
+                        android:orientation="horizontal"
+                        tools:ignore="MissingConstraints">
 
                         <ImageView
                             android:id="@+id/imagenUsuario"
                             android:layout_width="30sp"
                             android:layout_height="30sp"
+                            android:layout_gravity="center"
                             android:src="@drawable/ic_agregar"
-                            tools:ignore="MissingConstraints"
-                            android:layout_gravity="center"/>
+                            tools:ignore="MissingConstraints" />
 
                         <TextView
                             android:id="@+id/nombreUsuario"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Elegir Cliente"
-                            android:textSize="25sp"
-                            android:textColor="@color/black"
                             android:layout_gravity="center"
-                            tools:ignore="MissingConstraints"
-                            android:autoSizeTextType="uniform"
-                            android:autoSizeMinTextSize="12sp"
                             android:autoSizeMaxTextSize="100sp"
-                            android:autoSizeStepGranularity="2sp"/>
+                            android:autoSizeMinTextSize="12sp"
+                            android:autoSizeStepGranularity="2sp"
+                            android:autoSizeTextType="uniform"
+                            android:text="Elegir Cliente"
+                            android:textColor="@color/black"
+                            android:textSize="25sp"
+                            tools:ignore="MissingConstraints" />
 
                     </LinearLayout>
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/datosUsuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="gone"
-                    >
+                   >
+
                     <LinearLayout
 
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="15dp">
+                        android:layout_marginBottom="15dp"
+                        android:orientation="horizontal">
 
 
                         <LinearLayout
@@ -109,10 +342,10 @@
                                     android:autoSizeMinTextSize="12sp"
                                     android:autoSizeStepGranularity="2sp"
                                     android:autoSizeTextType="uniform"
-                                    android:textColor="@color/black"
                                     android:enabled="false"
                                     android:gravity="center"
                                     android:text="genero"
+                                    android:textColor="@color/black"
                                     android:textSize="20sp"
                                     tools:ignore="MissingConstraints" />
 
@@ -130,9 +363,9 @@
                         <LinearLayout
                             android:layout_width="139dp"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:gravity="center"
                             android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="vertical"
                             tools:ignore="MissingConstraints">
 
                             <TextView
@@ -155,9 +388,9 @@
                                     android:autoSizeMinTextSize="12sp"
                                     android:autoSizeStepGranularity="2sp"
                                     android:autoSizeTextType="uniform"
+                                    android:enabled="false"
                                     android:text="tipo de sangre"
                                     android:textColor="@color/black"
-                                    android:enabled="false"
                                     android:textSize="20sp"
                                     tools:ignore="MissingConstraints" />
 
@@ -194,9 +427,9 @@
                                     android:autoSizeMinTextSize="12sp"
                                     android:autoSizeStepGranularity="2sp"
                                     android:autoSizeTextType="uniform"
-                                    android:textColor="@color/black"
-                                    android:text="edad"
                                     android:enabled="false"
+                                    android:text="edad"
+                                    android:textColor="@color/black"
                                     android:textSize="20sp"
                                     tools:ignore="MissingConstraints" />
 
@@ -211,15 +444,14 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginBottom="15dp">
+                        android:layout_marginBottom="15dp"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Correo"
-                            android:textSize="15sp"
-                            />
+                            android:textSize="15sp" />
 
                         <EditText
                             android:id="@+id/correoUsuario"
@@ -230,9 +462,9 @@
                             android:autoSizeMinTextSize="12sp"
                             android:autoSizeStepGranularity="2sp"
                             android:autoSizeTextType="uniform"
+                            android:enabled="false"
                             android:text="Correo"
                             android:textColor="@color/black"
-                            android:enabled="false"
                             android:textSize="20sp"
                             tools:ignore="MissingConstraints" />
 
@@ -241,16 +473,15 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginBottom="15dp"
-                        >
+                        android:orientation="horizontal">
 
                         <LinearLayout
                             android:layout_width="211dp"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
                             android:layout_gravity="start"
-                            android:gravity="start">
+                            android:gravity="start"
+                            android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -309,22 +540,21 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginBottom="15dp"
-                        >
+                        android:orientation="horizontal">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            >
+                            android:orientation="vertical">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="¿El cliente cuenta alguna enfermedad?"
                                 android:layout_gravity="center"
-                                android:textSize="15sp"
+                                android:text="¿El cliente cuenta alguna enfermedad?"
                                 android:textColor="@color/black"
-                                />
+                                android:textSize="15sp" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -352,54 +582,53 @@
                                 </RadioGroup>
 
                             </LinearLayout>
-                        </LinearLayout>
 
+                            <EditText
+                                android:id="@+id/edtEnfermedadUsuario"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15sp"
+                                android:layout_marginRight="15sp"
+                                android:layout_marginBottom="15sp"
+                                android:hint="Ingrese las enfermedades"
+                                android:visibility="gone"/>
+
+                        </LinearLayout>
 
 
                     </LinearLayout>
 
 
-                    <EditText
-                        android:id="@+id/edtEnfermedadUsuario"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="15sp"
-                        android:layout_marginRight="15sp"
-                        android:hint="Ingrese las enfermedades"
-                        android:visibility="gone"
-                        android:layout_marginLeft="15sp"
-                        />
-
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginBottom="15dp"
-                        >
+                        android:orientation="horizontal">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            >
+                            android:orientation="vertical">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="¿El cliente cuenta esta medicado?"
                                 android:layout_gravity="center"
-                                android:textSize="15sp"
+                                android:text="¿El cliente cuenta esta medicado?"
                                 android:textColor="@color/black"
-                                />
+                                android:textSize="15sp" />
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
                                 android:gravity="center"
-                                >
+                                android:orientation="horizontal">
+
                                 <RadioGroup
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal">
+
                                     <RadioButton
                                         android:id="@+id/rbtnMedicinaSi"
                                         android:layout_width="wrap_content"
@@ -419,7 +648,6 @@
                         </LinearLayout>
 
 
-
                     </LinearLayout>
 
 
@@ -427,80 +655,101 @@
                         android:id="@+id/edtMedicinaUsuario"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="15sp"
-                        android:layout_marginRight="15sp"
                         android:layout_marginLeft="15sp"
-                        android:visibility="gone"
+                        android:layout_marginRight="15sp"
+                        android:layout_marginBottom="15sp"
                         android:hint="Ingrese su medicacion"
-                        />
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:layout_marginTop="15dp"
                 android:layout_gravity="center"
-                android:orientation="vertical"
-                >
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
                     android:text="Doctor"
+                    android:textSize="15sp"
 
                     />
+
                 <LinearLayout
                     android:id="@+id/layout_elegir_doctor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    tools:ignore="MissingConstraints"
-                    >
+                    tools:ignore="MissingConstraints">
 
 
                     <ImageView
                         android:id="@+id/imagenDoctor"
                         android:layout_width="30sp"
                         android:layout_height="30sp"
+                        android:layout_gravity="center"
                         android:src="@drawable/ic_agregar"
-                        tools:ignore="MissingConstraints"
-                        android:layout_gravity="center"/>
+                        tools:ignore="MissingConstraints" />
 
                     <TextView
                         android:id="@+id/nombreDoctor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Elegir Doctor"
-                        android:textSize="25sp"
-                        android:textColor="@color/black"
                         android:layout_gravity="center"
-                        android:enabled="false"
-                        tools:ignore="MissingConstraints"
-                        android:autoSizeTextType="uniform"
-                        android:autoSizeMinTextSize="12sp"
                         android:autoSizeMaxTextSize="100sp"
-                        android:autoSizeStepGranularity="2sp"/>
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:enabled="false"
+                        android:text="Elegir Doctor"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        tools:ignore="MissingConstraints" />
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="96dp"
+                            android:layout_height="match_parent"
+                            android:text="Especialidad:" />
+
+                        <Spinner
+                            android:id="@+id/spinnerEspecialidades"
+                            android:layout_width="181dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="2"
+
+
+                            android:gravity="center"
+
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -557,10 +806,10 @@
                 <LinearLayout
                     android:layout_width="181dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:orientation="vertical"
                     android:layout_gravity="end"
-                    android:gravity="center">
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -571,74 +820,28 @@
                         />
 
 
-
-                    <EditText
-                        android:id="@+id/edtHoraCita"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:autoSizeMaxTextSize="100sp"
-                        android:autoSizeMinTextSize="12sp"
-                        android:autoSizeStepGranularity="2sp"
-                        android:autoSizeTextType="uniform"
-                        android:minWidth="100dp"
-                        android:textColor="@color/black"
-                        android:textSize="25sp"
-                        android:focusable="false"
-                        tools:ignore="MissingConstraints"
-                        android:inputType="time"
-                        android:clickable="true"
-                        android:maxLines="1"
-                        android:layout_marginRight="20sp"
-                        android:layout_marginLeft="20sp"/>
-
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_marginBottom="15dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Especialidad:"
-                        />
-
                     <Spinner
-                        android:id="@+id/spinnerEspecialidades"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#9b9b9b"
+                        android:id="@+id/spinnerHorario"
+                        android:layout_width="181dp"
+                        android:layout_height="50dp"
                         android:layout_weight="2"
-
                         android:gravity="center"
 
                         />
 
                 </LinearLayout>
 
+
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="15dp"
-                android:orientation="vertical"
                 android:layout_gravity="center"
-                android:gravity="center">
+                android:layout_marginBottom="15dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -665,36 +868,28 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:layout_marginRight="50dp"
                         android:autoSizeMaxTextSize="100sp"
                         android:autoSizeMinTextSize="12sp"
                         android:autoSizeStepGranularity="2sp"
                         android:autoSizeTextType="uniform"
+                        android:inputType="numberDecimal"
                         android:minWidth="100dp"
                         android:textColor="@color/black"
                         android:textSize="25sp"
-                        android:inputType="numberDecimal"
-                        android:layout_marginRight="50dp"
                         tools:ignore="MissingConstraints" />
                 </LinearLayout>
 
             </LinearLayout>
 
 
-
-
-
-
-
             <Button
                 android:id="@+id/btnCrearConsulta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Crear consulta"
-                />
+                android:text="Crear consulta" />
 
         </LinearLayout>
-
-
 
 
     </ScrollView>
